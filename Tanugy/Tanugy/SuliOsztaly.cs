@@ -27,6 +27,14 @@ namespace Tanugy
             }
         }
 
+        public void TanarLista()
+        {
+            foreach (var i in Tanarok)
+            {
+                Console.WriteLine($"Név:{i.Nev},{i.Szak}");
+            }
+        }
+
        
 
 

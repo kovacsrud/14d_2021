@@ -22,6 +22,7 @@ namespace Tanugy
             SuliOsztaly osztaly9a = new SuliOsztaly(tanulok,tanarok,"9a");
 
             osztaly9a.TanuloLista();
+            osztaly9a.TanarLista();
 
             Console.ReadKey();
         }
