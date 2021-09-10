@@ -8,9 +8,11 @@ namespace Tanugy
 {
     public class SuliOsztaly
     {
-        public List<Tanulo> Tanulok { get; set; }
-        public List<Tanar> Tanarok { get; set; }
-        public string Osztalynev { get; set; }
+        List<Tanulo> Tanulok { get; set; }
+        List<Tanar> Tanarok { get; set; }
+        string Osztalynev { get; set; }
+
+        Tanar Osztalyfonok { get; set; }
 
         public SuliOsztaly(List<Tanulo> tanulok, List<Tanar> tanarok, string osztalynev)
         {
@@ -35,7 +37,23 @@ namespace Tanugy
             }
         }
 
-       
+       public void SetOsztalyfonok(string nev,string szak)
+        {
+            var osztalyfonok = Tanarok.Find(x=>x.Nev.ToLower()==nev.ToLower() && x.Szak.ToLower()==szak.ToLower());
+            if (osztalyfonok!=null)
+            {
+                Osztalyfonok = osztalyfonok;
+                Console.WriteLine($"{nev} beállítva!");
+            } else
+            {
+                Console.WriteLine("Nincs ilyen tanár!");
+            }
+        }
+
+        public string GetOsztalyfonok()
+        {
+            return Osztalyfonok.Nev;
+        }
 
 
     }

@@ -18,11 +18,15 @@ namespace Tanugy
 
             tanarok.Add(new Tanar("Kovács Győző", "matematika"));
             tanarok.Add(new Tanar("Nagy Elek", "irodalom"));
+            tanarok.Add(new Tanar("Füzesi Béla", "testnevelés"));
 
             SuliOsztaly osztaly9a = new SuliOsztaly(tanulok,tanarok,"9a");
 
             osztaly9a.TanuloLista();
             osztaly9a.TanarLista();
+            osztaly9a.SetOsztalyfonok("nAgy elEk", "irodalom");
+
+            Console.WriteLine(osztaly9a.GetOsztalyfonok());
 
             Console.ReadKey();
         }
