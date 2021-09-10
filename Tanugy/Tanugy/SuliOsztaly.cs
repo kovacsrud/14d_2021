@@ -55,6 +55,16 @@ namespace Tanugy
             return Osztalyfonok.Nev;
         }
 
+        public void SetOSztalynev(string osztalynev)
+        {
+            Osztalynev = osztalynev;
+        }
+
+        public override string ToString()
+        {
+            return $"Osztály:{Osztalynev},Létszám:{Tanulok.Count}";
+        }
+
 
     }
 }

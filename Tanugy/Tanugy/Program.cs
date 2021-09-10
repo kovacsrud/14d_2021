@@ -27,6 +27,8 @@ namespace Tanugy
             osztaly9a.SetOsztalyfonok("nAgy elEk", "irodalom");
 
             Console.WriteLine(osztaly9a.GetOsztalyfonok());
+            osztaly9a.SetOSztalynev("10a");
+            Console.WriteLine(osztaly9a.ToString());
 
             Console.ReadKey();
         }
