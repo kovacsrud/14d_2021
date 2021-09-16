@@ -44,7 +44,16 @@ namespace Versenyzok
 
             Console.WriteLine(vanrajtszam.Find(x=>x.Rajtszam==vanrajtszam.Min(y=>y.Rajtszam)).Nemzetiseg);
 
+            var stat = vanrajtszam.ToLookup(x=>x.Rajtszam);
 
+            foreach (var i in stat)
+            {
+                if (i.Count()>1)
+                {
+                    Console.WriteLine($"{i.Key},{i.Count()}");
+                }
+                
+            }
 
 
 
