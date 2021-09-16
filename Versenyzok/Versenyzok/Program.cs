@@ -33,6 +33,14 @@ namespace Versenyzok
             Console.WriteLine($"Az utolsó pilóta:{versenyzok[versenyzok.Count-1].Nev}");
             Console.WriteLine($"Az utolsó pilóta:{versenyzok.Last().Nev}");
 
+            var p19 = versenyzok.FindAll(x=>x.SzuletesiDatum.Year<1901);
+
+            foreach (var i in p19)
+            {
+                Console.WriteLine($"{i.Nev},{i.SzuletesiDatum.Year}.{i.SzuletesiDatum.Month}.{i.SzuletesiDatum.Day}");
+            }
+
+
 
             Console.ReadKey();
         }
