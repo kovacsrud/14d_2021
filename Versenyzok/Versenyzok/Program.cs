@@ -40,6 +40,12 @@ namespace Versenyzok
                 Console.WriteLine($"{i.Nev},{i.SzuletesiDatum.Year}.{i.SzuletesiDatum.Month}.{i.SzuletesiDatum.Day}");
             }
 
+            var vanrajtszam = versenyzok.FindAll(x=>x.Rajtszam>=0);
+
+            Console.WriteLine(vanrajtszam.Find(x=>x.Rajtszam==vanrajtszam.Min(y=>y.Rajtszam)).Nemzetiseg);
+
+
+
 
 
             Console.ReadKey();
