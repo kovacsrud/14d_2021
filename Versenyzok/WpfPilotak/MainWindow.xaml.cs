@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,19 +25,30 @@ namespace WpfPilotak
         public MainWindow()
         {
             InitializeComponent();
+                     
 
-            try
+
+        }
+
+        private void buttonMegnyit_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            if (dialog.ShowDialog()==true)
             {
-                versenyzoAdatok = new VersenyzoAdatok("pilotak.csv");
-                MessageBox.Show($"Adatok száma:{versenyzoAdatok.Versenyzok.Count}");
-                datagridVersenyzok.ItemsSource = versenyzoAdatok.Versenyzok;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);               
+                try
+                {
+                    versenyzoAdatok = new VersenyzoAdatok(dialog.FileName);
+                    MessageBox.Show($"Adatok száma:{versenyzoAdatok.Versenyzok.Count}");
+                    datagridVersenyzok.ItemsSource = versenyzoAdatok.Versenyzok;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
 
-
+            
         }
     }
 }
