@@ -50,5 +50,26 @@ namespace WpfPilotak
 
             
         }
+
+        private void buttonKeres_Click(object sender, RoutedEventArgs e)
+        {
+            if (textboxNev.Text.Length>2)
+            {
+                var eredmeny = versenyzoAdatok.Versenyzok.FindAll(x=>x.Nev==textboxNev.Text);
+                if (eredmeny.Count>0)
+                {
+                    //eredmény megjelenítés
+                    datagridKereses.ItemsSource = eredmeny;
+                } else
+                {
+                    MessageBox.Show("Nincs ilyen név!");
+                }
+
+                
+            } else
+            {
+                MessageBox.Show("Adjon meg egy nevet!");
+            }
+        }
     }
 }
