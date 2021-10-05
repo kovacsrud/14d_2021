@@ -18,6 +18,7 @@ namespace WpfLotto
         private int sorSzam;
         private int oszlopSzam;
         private int szamlalo;
+        Random rnd;
 
         public LottoJatek(MainWindow mainwindow,int hanyszam,int sorszam,int oszlopszam)
         {
@@ -29,6 +30,7 @@ namespace WpfLotto
             oszlopSzam = oszlopszam;
             szamlalo = 1;
             Gombok();
+            rnd = new Random();
         }
 
         private void Gombok()
@@ -83,12 +85,22 @@ namespace WpfLotto
                 gomb.Background = Brushes.AliceBlue;
 
                 szamlalo++;
+            }                                                      
+            
+        }
+
+        private void Sorsolas()
+        {
+            for (int i = 0; i < hanySzam; i++)
+            {
+                var nyeroszam = rnd.Next(1, (sorSzam * oszlopSzam) + 1);
+                while (nyeroSzamok.Contains(nyeroszam))
+                {
+                    nyeroszam = rnd.Next(1, (sorSzam * oszlopSzam) + 1);
+                }
+                nyeroSzamok.Add(nyeroszam);
             }
-                
-               
-            
-            
-            
+
         }
     }
 }
