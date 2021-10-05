@@ -31,7 +31,10 @@ namespace WpfLotto
             szamlalo = 1;
             Gombok();
             rnd = new Random();
+            mainWindow.buttonSorsolas.Click += SorsolasClick;
         }
+
+        
 
         private void Gombok()
         {
@@ -80,13 +83,24 @@ namespace WpfLotto
             {
                 tippek.Add(gombSzam);
                 Debug.WriteLine(gombSzam);
-                //gomb.IsEnabled = false;
+               
                 gomb.Foreground = Brushes.Red;
                 gomb.Background = Brushes.AliceBlue;
 
                 szamlalo++;
-            }                                                      
+            }
+            if (szamlalo>hanySzam)
+            {
+                mainWindow.buttonSorsolas.IsEnabled = true;
+            }
             
+        }
+
+        private void SorsolasClick(object sender,EventArgs e)
+        {
+            Sorsolas();
+            //Todo: nyerőszámok megjelenítése
+            //Todo: találatok megjelenítése
         }
 
         private void Sorsolas()

@@ -15,6 +15,6 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
+        <Button x:Name="buttonSorsolas" Content="Sorsolás" Grid.Column="1" FontSize="20" Height="40" IsEnabled="False"/>
     </Grid>
 </Window>
