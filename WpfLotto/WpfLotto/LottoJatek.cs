@@ -30,14 +30,24 @@ namespace WpfLotto
             hanySzam = hanyszam;
             sorSzam = sorszam;
             oszlopSzam = oszlopszam;
-            szamlalo = 1;
-            talalatok = 0;
-            Gombok();
+                       
             rnd = new Random();
             mainWindow.buttonSorsolas.Click += SorsolasClick;
+            mainWindow.buttonUj.Click += UjJatek;
+            
+            
         }
 
-        
+        private void UjJatek(object sender,EventArgs e)
+        {
+                     
+            Gombok();
+            tippek.Clear();
+            nyeroSzamok.Clear();
+            mainWindow.textBlockTalat.Text = "";
+            szamlalo = 1;
+            talalatok = 0;
+        }
 
         private void Gombok()
         {
@@ -95,6 +105,7 @@ namespace WpfLotto
             if (szamlalo>hanySzam)
             {
                 mainWindow.buttonSorsolas.IsEnabled = true;
+                mainWindow.buttonUj.IsEnabled = false;
             }
             
         }
@@ -105,6 +116,7 @@ namespace WpfLotto
             GetTalalat();
             mainWindow.textBlockTalat.Text = talalatok.ToString();
             mainWindow.buttonSorsolas.IsEnabled = false;
+            mainWindow.buttonUj.IsEnabled = true;
 
         }
 
