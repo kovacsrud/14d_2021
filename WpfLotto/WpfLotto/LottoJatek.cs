@@ -18,6 +18,8 @@ namespace WpfLotto
         private int sorSzam;
         private int oszlopSzam;
         private int szamlalo;
+        public int Talalatok { get { return talalatok; }  }
+        private int talalatok;
         Random rnd;
 
         public LottoJatek(MainWindow mainwindow,int hanyszam,int sorszam,int oszlopszam)
@@ -29,6 +31,7 @@ namespace WpfLotto
             sorSzam = sorszam;
             oszlopSzam = oszlopszam;
             szamlalo = 1;
+            talalatok = 0;
             Gombok();
             rnd = new Random();
             mainWindow.buttonSorsolas.Click += SorsolasClick;
@@ -99,8 +102,10 @@ namespace WpfLotto
         private void SorsolasClick(object sender,EventArgs e)
         {
             Sorsolas();
-            //Todo: nyerőszámok megjelenítése
-            //Todo: találatok megjelenítése
+            GetTalalat();
+            mainWindow.textBlockTalat.Text = talalatok.ToString();
+            mainWindow.buttonSorsolas.IsEnabled = false;
+
         }
 
         private void Sorsolas()
@@ -115,6 +120,17 @@ namespace WpfLotto
                 nyeroSzamok.Add(nyeroszam);
             }
 
+        }
+
+        private void GetTalalat()
+        {
+            for (int i = 0; i < tippek.Count; i++)
+            {
+                if (nyeroSzamok.Contains(tippek[i]))
+                {
+                    talalatok++;
+                }
+            }
         }
     }
 }
