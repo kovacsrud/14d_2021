@@ -84,7 +84,7 @@ namespace WpfLotto
             }
 
             //itt kéne megtalálni a gridMain-t valahogy
-            mainWindow.gridMain.Children.Add(gridSzamok);
+            mainWindow.gridGombok.Children.Add(gridSzamok);
         }
 
         private void GombClick(object sender,EventArgs e)
@@ -114,10 +114,34 @@ namespace WpfLotto
         {
             Sorsolas();
             GetTalalat();
+            Kiemeles();
             mainWindow.textBlockTalat.Text = talalatok.ToString();
             mainWindow.buttonSorsolas.IsEnabled = false;
             mainWindow.buttonUj.IsEnabled = true;
 
+        }
+
+        private void Kiemeles()
+        {
+            foreach (Grid gr in mainWindow.gridGombok.Children)
+            {
+                foreach (Button button in gr.Children)
+                {
+                    if (nyeroSzamok.Contains(Convert.ToInt32(button.Content)))
+                    {
+                        button.Foreground = Brushes.Red;
+                        button.Background = Brushes.Green;
+                    }
+
+                    if (nyeroSzamok.Contains(Convert.ToInt32(button.Content)) && tippek.Contains(Convert.ToInt32(button.Content)))
+                    {
+                        button.Foreground = Brushes.Red;
+                        button.Background = Brushes.Gold;
+                    }
+
+
+                }
+            }
         }
 
         private void Sorsolas()
