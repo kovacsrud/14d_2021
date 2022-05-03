@@ -5,29 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfNotepad"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Notepad" Height="450" Width="800" Closing="Window_Closing" >
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        
+        
             <Menu x:Name="mainMenu">
                 <MenuItem Header="Fájl" FontSize="18"  >
                     <MenuItem x:Name="megnyitas" Header="Megnyitás" FontSize="18" Click="megnyitas_Click" />
                     <MenuItem Header="Mentés" FontSize="18"  Click="Mentes_Click"/>
-                    <Separator />
+                    <MenuItem Header="Mentés Másként" FontSize="18"  Click="MentesMaskent_Click"/>
+                <Separator />
                     <MenuItem x:Name="kilepes" Header="Kilépés" FontSize="18" Click="kilepes_Click" />
                 </MenuItem>
-                    <MenuItem Header="Szerkesztés" FontSize="18"></MenuItem>
+                    <MenuItem Header="Szerkesztés" FontSize="18">
+                        <MenuItem Header="Kivágás" x:Name="menuitemKivagas" FontSize="18" IsEnabled="False" Click="Kivagas_Click"/>
+                        <MenuItem Header="Másolás" x:Name="menuitemMasolas" FontSize="18" IsEnabled="False" Click="Masolas_Click"/>
+                        <Separator />
+                        <MenuItem Header="Beillesztés" x:Name="menuitemBeillesztes" FontSize="18" IsEnabled="False" Click="Beillesztes_Click"/>
+            </MenuItem>
                     <MenuItem Header="Súgó" FontSize="18">
                         <MenuItem Header="Névjegy" FontSize="18" Click="About_Click"></MenuItem>
                     </MenuItem>
 
                 </Menu>
             
-            <TextBox x:Name="szoveg" FontSize="20" TextWrapping="Wrap"  ScrollViewer.CanContentScroll="True" AcceptsReturn="True"  />
+            <TextBox x:Name="szoveg" Grid.Row="1" FontSize="20" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"  AcceptsReturn="True" TextChanged="szoveg_TextChanged" SelectionChanged="szoveg_SelectionChanged" />
             
 
-        </StackPanel>
-        </ScrollViewer>
+        
 
     </Grid>
 </Window>
